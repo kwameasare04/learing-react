@@ -3,18 +3,43 @@ import './App.css';
 import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
 
 class App extends Component { /// person tag in this funtion is a self closing tag
-  render() {
-    return (/// properties added to the person tags
-      <div className='App'> 
-      
-      <h1> Hi, im a react app</h1> 
+  state = {
+    people: [
+      {name: 'Kevin', age:'36'},  
+      {name: 'Max', age:'28'},
+      {name: 'Rodney', age:'19'}
+    ]
+  } /// state object accepts any type of data 
 
-      <Person name="Kevin" age="36"> My hobbies are : skiing and food</Person> 
-      <Person name="Max" age="28"> </Person>
-      <Person name="Rodney" age="19"> My hobbies are : Saxaphone and Hockey </Person>
+
+  switchNameHandler = () =>{ ////event handler function 
+    // console.log("switch name");
+    this.setState({
+      people: [
+        {name: 'Kevin', age:'37'},  
+        {name: 'Maxim', age:'29'},
+        {name: 'Rodney', age:'20'}
+      ]
+    })
+
+  }
+  render() {
+
+    return (/// properties added to the person tags
+<div className='App'> 
+
+      <h1> Hi, im a react app</h1> 
+        {/* onClick added that calls the event handler function when button is clicked */}
+      <button onClick={this.switchNameHandler}>click me!</button>
+
+      <Person name = {this.state.people[0].name} age={this.state.people[0].age}> My hobbies are : skiing and food </Person> 
+      <Person name={this.state.people[1].name} age={this.state.people[1].age}> </Person>
+      <Person name={this.state.people[2].name}age={this.state.people[2].age}> My hobbies are : Saxaphone and Hockey </Person>
+      
       </div>
+    
     );
   }
 }
-
+/// "this" in the name and age attribute refers to this class. state the object in the class and the people array in the object.
 export default App;
