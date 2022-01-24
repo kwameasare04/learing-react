@@ -1,9 +1,18 @@
 import React from 'react'; // have to import react to use any features
 
-const person = () => { /// function that returns javascriptfx 
-return <p> i'm a person! and i am {Math.floor(Math.random() * 30)} </p> // added dynamic content that generates random age
-}
+const person = (props) => { /// function returns a paragraph with the property name and age in statement
+return (
+/* dynamic content that returns properties name and age */
+<div>
+    
+     <p> i'm a {props.name} and i am {props.age} </p>  
 
+     <p>{props.children}</p>
+
+</div>
+)
+}
+// props.children Allows for content to be added from outside person.js file
 export default person; /// Makes person the default export in the file.
 
 
