@@ -10,7 +10,7 @@ const app = props =>{
           {name: 'Rodney', age:'19'}
         ]});
 
-  switchNameHandler = () =>{ ////event handler function 
+  const switchNameHandler = () =>{ ////event handler function 
     // console.log("switch name");
     personSetState({
       people: [
@@ -28,7 +28,7 @@ const app = props =>{
 
       <h1> Hi, im a react app</h1> 
         {/* onClick added that calls the event handler function when button is clicked */}
-      <button onClick={this.switchNameHandler}>click me!</button>
+      <button onClick={switchNameHandler}>click me!</button>
 
       <Person name = {personState.people[0].name} age={personState.people[0].age}> My hobbies are : skiing and food </Person> 
       <Person name={personState.people[1].name} age={personState.people[1].age}> </Person>
