@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
 
