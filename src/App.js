@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
-
+/// turn class into functional component
 const app = props =>{ 
+
+  /// use state is the hook that allows state to be managed functionally
   const [personState, personSetState] =  useState({
+    //// useState needs two parameters, the first is the state being set. the second a way for state to be updated.
+    //// useState is being destructured into personState and setPersonState
     people: [
           {name: 'Kevin', age:'36'},  
           {name: 'Max', age:'28'},
           {name: 'Rodney', age:'19'}
         ]});
 
-  const switchNameHandler = () =>{ ////event handler function 
+  const switchNameHandler = () =>{ ////event handler function being stored as a constant
     // console.log("switch name");
     personSetState({
       people: [
@@ -22,12 +26,12 @@ const app = props =>{
 
   }
 
-
+//// No render method, just return jsX
     return (/// properties added to the person tags
 <div className='App'> 
 
       <h1> Hi, im a react app</h1> 
-        {/* onClick added that calls the event handler function when button is clicked */}
+        {/* onClick added that calls the event handler function when button is clicked, this.switchHandler no longer needed as not in class */}
       <button onClick={switchNameHandler}>click me!</button>
 
       <Person name = {personState.people[0].name} age={personState.people[0].age}> My hobbies are : skiing and food </Person> 
@@ -39,26 +43,4 @@ const app = props =>{
     );
   }
 
-/// "this" in the name and age attribute refers to this class. state the object in the class and the people array in the object.
 export default app;
-// const app = props => { /// person tag in this funtion is a self closing tag
-//   state = {
-//     people: [
-//       {name: 'Kevin', age:'36'},  
-//       {name: 'Max', age:'28'},
-//       {name: 'Rodney', age:'19'}
-//     ]
-//   } /// state object accepts any type of data 
-
-
-//   switchNameHandler = () =>{ ////event handler function 
-//     // console.log("switch name");
-//     this.setState({
-//       people: [
-//         {name: 'Kevin', age:'37'},  
-//         {name: 'Maxim', age:'29'},
-//         {name: 'Rodney', age:'20'}
-//       ]
-//     })
-
-//   }
