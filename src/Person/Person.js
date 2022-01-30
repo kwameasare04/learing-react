@@ -5,7 +5,8 @@ return (
 /* dynamic content that returns properties name and age */
 <div>
     
-     <p> i'm a {props.name} and i am {props.age} </p>  
+     <p onClick={props.click} ///// onClick being assigned to property the person element
+     > i'm a {props.name} and i am {props.age} </p>  
 
      <p>{props.children}</p>
 
