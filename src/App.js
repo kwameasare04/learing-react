@@ -30,14 +30,14 @@ class App extends Component { /// person tag in this funtion is a self closing t
 
       <h1> Hi, im a react app</h1> 
         {/* onClick added that calls the event handler function when button is clicked */}
-      <button onClick={this.switchNameHandler.bind(this, "Tiffany")}>click me!</button>
+      <button onClick={this.switchNameHandler.bind(this, "Tiffany")}>click me!</button> 
 
       <Person name ={this.state.people[0].name} 
-      click={this.switchNameHandler} /// adding switchName property to element
+      click={this.switchNameHandler.bind(this, "Kimberly")} /// adding switchName property to element bind method is used to set the newName which is then updated 
       age={this.state.people[0].age}> My hobbies are : skiing and food </Person> 
 
       <Person name={this.state.people[1].name}
-      click={this.switchNameHandler}
+      click={this.switchNameHandler.bind(this, 'Marcus')}
        age={this.state.people[1].age}> </Person>
 
       <Person name={this.state.people[2].name}
