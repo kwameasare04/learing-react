@@ -4,10 +4,11 @@ const person = (props) => { /// function returns a paragraph with the property n
 return (
 /* dynamic content that returns properties name and age */
 <div>
-    
-     <p onClick={props.click} ///// onClick being assigned to property the person element
-     > i'm a {props.name} and i am {props.age} </p>  
-
+         {/*onClick being assigned to property the person element*/}
+     <p onClick={props.click}> i'm a {props.name} and i am {props.age} </p>  
+     {/* onChange has reference to property change with is a method with a set state function  */}
+     {/* assaigning props.name to value makes the name visible from the start */}
+     < input type="text" onChange={props.change} value={props.name}/>
      <p>{props.children}</p>
 
 </div>
