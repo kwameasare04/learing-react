@@ -23,6 +23,19 @@ class App extends Component { /// person tag in this funtion is a self closing t
     })
 
   }
+//// changeNameHandler is almost identical to switchNameHandler with exception of event parameter
+  changeNameHandler = (event) => {
+    this.setState({
+      people: [
+        {name: "Kevin", age:'37'},  
+        {name: event.target.value, age:'29'},  ///name being changed by extracting the input element which is event.target ad its value with .value
+        {name: 'Rodney', age:'20'}
+      ]
+    })
+ 
+  }
+
+
   render() {
 
     return (/// properties added to the person tags
@@ -38,7 +51,9 @@ class App extends Component { /// person tag in this funtion is a self closing t
 
       <Person name={this.state.people[1].name}
       click={this.switchNameHandler.bind(this, 'Marcus')}
-       age={this.state.people[1].age}> </Person>
+       age={this.state.people[1].age}
+       change={this.changeNameHandler}>
+       </Person>
 
       <Person name={this.state.people[2].name}
       age={this.state.people[2].age}> My hobbies are : Saxaphone and Hockey </Person>
