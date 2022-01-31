@@ -37,13 +37,23 @@ class App extends Component { /// person tag in this funtion is a self closing t
 
 
   render() {
+/// created inline syle which is used by the button attribute
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
 
     return (/// properties added to the person tags
 <div className='App'> 
 
       <h1> Hi, im a react app</h1> 
         {/* onClick added that calls the event handler function when button is clicked */}
-      <button onClick={this.switchNameHandler.bind(this, "Tiffany")}>click me!</button> 
+      <button 
+      style={style} ////referencing the style const create
+      onClick={this.switchNameHandler.bind(this, "Tiffany")}>click me!</button> 
 
       <Person name ={this.state.people[0].name} 
       click={this.switchNameHandler.bind(this, "Kimberly")} /// adding switchName property to element bind method is used to set the newName which is then updated 
