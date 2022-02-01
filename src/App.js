@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
+import UserOutputs from './UserOutputs/UserOutputs.js';
+import UserInputs from './UserInputs/UserInputs.js';
+import './UserInputs/UserInputs.css';
+import './UserOutputs/UserOutputs.css';
 
 class App extends Component { /// person tag in this funtion is a self closing tag
   state = {
@@ -8,6 +12,9 @@ class App extends Component { /// person tag in this funtion is a self closing t
       {name: 'Kevin', age:'36'},  
       {name: 'Max', age:'28'},
       {name: 'Rodney', age:'19'}
+    ],
+    UserName: [
+     {username: 'boobootheclown'}
     ]
   } /// state object accepts any type of data 
 
@@ -33,6 +40,14 @@ class App extends Component { /// person tag in this funtion is a self closing t
       ]
     })
  
+  }
+
+  editUserNameHandler = (event) => {
+    this.setState({
+      UserName: [
+        {username: event.target.value}
+      ]
+    })
   }
 
 
@@ -68,6 +83,8 @@ class App extends Component { /// person tag in this funtion is a self closing t
       <Person name={this.state.people[2].name}
       age={this.state.people[2].age}> My hobbies are : Saxaphone and Hockey </Person>
       
+      <UserOutputs username={this.state.UserName[0].username} ></UserOutputs>
+      <UserInputs change={this.editUserNameHandler} username={this.state.UserName[0].username}></UserInputs>
       </div>
     
     );
@@ -75,3 +92,16 @@ class App extends Component { /// person tag in this funtion is a self closing t
 }
 /// "this" in the name and age attribute refers to this class. state the object in the class and the people array in the object.
 export default App;
+
+
+
+////Create two new componts: UserInputs and UserOutputs
+////UserInputs should hold and input element,UserOutputs two paragraph elements
+///Output multiple UserOutput components in the App component (any paragraph or text)
+////Pass a username of your choice to UserOutput via props and display it there
+////Add state to the app componet (=> the username) and pass the username to the USerOutput component
+///Add a method to manipulate the state (=> an event handler method)
+////Pass the event handler method reference to the UserInputs component and bind it to the input-change event
+/////Ensure that the new input entered by the user overwrited tho old username passed to the output
+////Add two way binding to your input(in UserInput) to also display the starting user name
+///// Add styling of your choice to component elements in the components
