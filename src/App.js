@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
-import UserOutputs from './UserOutputs/UserOutputs.js';
-import UserInputs from './UserInputs/UserInputs.js';
-import './UserInputs/UserInputs.css';
-import './UserOutputs/UserOutputs.css';
 
 class App extends Component { /// person tag in this funtion is a self closing tag
   state = {
     people: [
       {name: 'Kevin', age:'36'},  
       {name: 'Max', age:'28'},
-      {name: 'Rodney', age:'19'}
-    ],
-    UserName: [
-     {username: 'boobootheclown'}
+      {name: 'Rodney', age:'19'}  
     ]
   } /// state object accepts any type of data 
-
 
   switchNameHandler = (newName) =>{ ////event handler function 
     // console.log("switch name");
@@ -40,14 +32,6 @@ class App extends Component { /// person tag in this funtion is a self closing t
       ]
     })
  
-  }
-
-  editUserNameHandler = (event) => {
-    this.setState({
-      UserName: [
-        {username: event.target.value}
-      ]
-    })
   }
 
 
