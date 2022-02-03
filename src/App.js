@@ -8,7 +8,8 @@ class App extends Component { /// person tag in this funtion is a self closing t
       {name: 'Kevin', age:'36'},  
       {name: 'Max', age:'28'},
       {name: 'Rodney', age:'19'}  
-    ]
+    ],
+    showPerson: false
   } /// state object accepts any type of data 
 
   switchNameHandler = (newName) =>{ ////event handler function 
@@ -34,6 +35,11 @@ class App extends Component { /// person tag in this funtion is a self closing t
  
   }
 
+  togglePersonHandler = () =>{
+    const doesShow = this.state.showPerson;
+    this.setState({showPerson: !doesShow});
+  }
+
 
   render() {
 /// created inline syle which is used by the button attribute
@@ -52,9 +58,11 @@ class App extends Component { /// person tag in this funtion is a self closing t
         {/* onClick added that calls the event handler function when button is clicked */}
       <button 
       style={style} ////referencing the style const create
-      onClick={this.switchNameHandler.bind(this, "Tiffany")}>click me!</button> 
-
-      <Person name ={this.state.people[0].name} 
+      //// calls toggle person handler
+      onClick={this.togglePersonHandler}>toggle people!</button> 
+    {this.state.showPerson ? /// ternary operator which renders div if show person = true
+      <div>
+    <Person name ={this.state.people[0].name} 
       click={this.switchNameHandler.bind(this, "Kimberly")} /// adding switchName property to element bind method is used to set the newName which is then updated 
       age={this.state.people[0].age}> My hobbies are : skiing and food </Person> 
 
@@ -66,8 +74,9 @@ class App extends Component { /// person tag in this funtion is a self closing t
 
       <Person name={this.state.people[2].name}
       age={this.state.people[2].age}> My hobbies are : Saxaphone and Hockey </Person>
-      
-     
+    </div> : null /// returns nothing if false
+    } 
+    
       </div>
     
     );
