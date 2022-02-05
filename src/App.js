@@ -37,7 +37,7 @@ class App extends Component { /// person tag in this funtion is a self closing t
 
   togglePersonHandler = () =>{
     const doesShow = this.state.showPerson;
-    this.setState({showPerson: !doesShow});
+    this.setState({showPerson: !doesShow}); ///changes showPerson to value it is not currently set too
   }
 
 
@@ -51,8 +51,32 @@ class App extends Component { /// person tag in this funtion is a self closing t
       cursor: 'pointer'
     }
 
-    return (/// properties added to the person tags
-<div className='App'> 
+    let person = null; /// set person to null by default
+
+    if(this.state.showPerson === true){
+////returns person variable that is rendered when show person in state is true
+
+      person = (
+        <div>
+        <Person name ={this.state.people[0].name} 
+          click={this.switchNameHandler.bind(this, "Kimberly")} /// adding switchName property to element bind method is used to set the newName which is then updated 
+          age={this.state.people[0].age}> My hobbies are : skiing and food </Person> 
+    
+          <Person name={this.state.people[1].name}
+          click={this.switchNameHandler.bind(this, 'Marcus')}
+           age={this.state.people[1].age}
+           change={this.changeNameHandler}>
+           </Person>
+    
+          <Person name={this.state.people[2].name}
+          age={this.state.people[2].age}> My hobbies are : Saxaphone and Hockey </Person>
+        </div> 
+      )
+      
+    }
+
+    return (/// returns rendered jsx
+    <div className='App'> 
 
       <h1> Hi, im a react app</h1> 
         {/* onClick added that calls the event handler function when button is clicked */}
@@ -60,24 +84,9 @@ class App extends Component { /// person tag in this funtion is a self closing t
       style={style} ////referencing the style const create
       //// calls toggle person handler
       onClick={this.togglePersonHandler}>toggle people!</button> 
-    {this.state.showPerson ? /// ternary operator which renders div if show person = true
-      <div>
-    <Person name ={this.state.people[0].name} 
-      click={this.switchNameHandler.bind(this, "Kimberly")} /// adding switchName property to element bind method is used to set the newName which is then updated 
-      age={this.state.people[0].age}> My hobbies are : skiing and food </Person> 
-
-      <Person name={this.state.people[1].name}
-      click={this.switchNameHandler.bind(this, 'Marcus')}
-       age={this.state.people[1].age}
-       change={this.changeNameHandler}>
-       </Person>
-
-      <Person name={this.state.people[2].name}
-      age={this.state.people[2].age}> My hobbies are : Saxaphone and Hockey </Person>
-    </div> : null /// returns nothing if false
-    } 
-    
-      </div>
+      {person}
+ 
+    </div>
     
     );
   }
