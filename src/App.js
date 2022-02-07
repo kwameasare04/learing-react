@@ -5,9 +5,9 @@ import Person from './Person/Person'; /// A statement that imports "Person" from
 class App extends Component { /// person tag in this funtion is a self closing tag
   state = {
     people: [
-      {name: 'Kevin', age:'36'},  
-      {name: 'Max', age:'28'},
-      {name: 'Rodney', age:'19'}  
+      {id: 'qwe', name: 'Kevin', age:'36'},   //////added unique id's to people object array to help react identify different componets
+      {id: 'dcv',name: 'Max', age:'28'},
+      {id: 'yhu',name: 'Rodney', age:'19'}  
     ],
     showPerson: false
   } /// state object accepts any type of data 
@@ -64,6 +64,7 @@ this.setState({people:people})
             click={() => this.deletePersonHandler(index)}
             name={person.name} 
             age={person.age}
+            key={person.id} //// unique identifier added to key. Would usually be primary key from db
             ></Person>
           })}
 
