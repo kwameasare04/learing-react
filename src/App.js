@@ -12,17 +12,16 @@ class App extends Component { /// person tag in this funtion is a self closing t
     showPerson: false
   } /// state object accepts any type of data 
 
-  switchNameHandler = (newName) =>{ ////event handler function 
-    // console.log("switch name");
-    this.setState({
-      people: [
-        {name: newName, age:'37'},  
-        {name: 'Maxim', age:'29'},
-        {name: 'Rodney', age:'20'}
-      ]
-    })
+  /// this method removes an element from the array and returns update people array
+deletePersonHandler = (personIndex) =>{
+// const people = this.state.people; /// Don't do this!! As you are changing original array and leads to unpridictable code!!
+const people = [...this.state.people]; /// Good practice as create a copy and are not changing original array
+// const people = this.state.people.slice(); /// can do this as well as it is immutable 
+people.splice(personIndex, 1)
+this.setState({people:people})
+}
 
-  }
+
 //// changeNameHandler is almost identical to switchNameHandler with exception of event parameter
   changeNameHandler = (event) => {
     this.setState({
@@ -56,20 +55,18 @@ class App extends Component { /// person tag in this funtion is a self closing t
     if(this.state.showPerson === true){
 ////returns person variable that is rendered when show person in state is true
 
+
+///// the person maps out the contents of the people array in state, each iteration produces a Person component with person.name and person.age
       person = (
         <div>
-        <Person name ={this.state.people[0].name} 
-          click={this.switchNameHandler.bind(this, "Kimberly")} /// adding switchName property to element bind method is used to set the newName which is then updated 
-          age={this.state.people[0].age}> My hobbies are : skiing and food </Person> 
-    
-          <Person name={this.state.people[1].name}
-          click={this.switchNameHandler.bind(this, 'Marcus')}
-           age={this.state.people[1].age}
-           change={this.changeNameHandler}>
-           </Person>
-    
-          <Person name={this.state.people[2].name}
-          age={this.state.people[2].age}> My hobbies are : Saxaphone and Hockey </Person>
+          {this.state.people.map((person, index) => {
+            return <Person 
+            click={() => this.deletePersonHandler(index)}
+            name={person.name} 
+            age={person.age}
+            ></Person>
+          })}
+
         </div> 
       )
       
