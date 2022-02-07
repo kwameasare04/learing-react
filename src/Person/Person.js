@@ -8,7 +8,7 @@ return (
      <p onClick={props.click}> hello i'm {props.name} and i am {props.age} </p>  
      {/* onChange has reference to property change with is a method with a set state function  */}
      {/* assaigning props.name to value makes the name visible from the start */}
-     < input type="text" onChange={props.change} value={props.name}/>
+     < input type="text" onChange={props.changed} value={props.name}/>
      <p>{props.children}</p>
 
 </div>
