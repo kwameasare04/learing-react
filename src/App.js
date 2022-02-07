@@ -22,17 +22,38 @@ this.setState({people:people})
 }
 
 
-//// changeNameHandler is almost identical to switchNameHandler with exception of event parameter
-  changeNameHandler = (event) => {
-    this.setState({
-      people: [
-        {name: "Kevin", age:'37'},  
-        {name: event.target.value, age:'29'},  ///name being changed by extracting the input element which is event.target ad its value with .value
-        {name: 'Rodney', age:'20'}
-      ]
-    })
+// //// changeNameHandler is almost identical to switchNameHandler with exception of event parameter
+//   changeNameHandler = (event) => {
+//     this.setState({
+//       people: [
+//         {name: "Kevin", age:'37'},  
+//         {name: event.target.value, age:'29'},  ///name being changed by extracting the input element which is event.target ad its value with .value
+//         {name: 'Rodney', age:'20'}
+//       ]
+//     })
  
+//   }
+
+  nameChangedHandler = (event,id) =>{
+    const personIndex = this.state.people.findIndex(p => {
+      return p.id === id
+    }) /// returns the index of the value being targeted 
+
+    const person = {
+      ...this.state.people[personIndex]
+    } ////stores value of the index being targeted
+
+    person.name = event.target.value; /// changes value of persons name to the target value
+
+    const people = [ ...this.state.people ]; ///create a copy of the people array
+
+    people[personIndex] = person; /// change the value of slescted index in the copied array
+
+    this.setState({people:people}) ///change the state value in people 
+
+
   }
+
 
   togglePersonHandler = () =>{
     const doesShow = this.state.showPerson;
@@ -52,10 +73,8 @@ this.setState({people:people})
 
     let person = null; /// set person to null by default
 
-    if(this.state.showPerson === true){
 ////returns person variable that is rendered when show person in state is true
-
-
+    if(this.state.showPerson === true){
 ///// the person maps out the contents of the people array in state, each iteration produces a Person component with person.name and person.age
       person = (
         <div>
@@ -65,13 +84,11 @@ this.setState({people:people})
             name={person.name} 
             age={person.age}
             key={person.id} //// unique identifier added to key. Would usually be primary key from db
+            changed={(event) =>  this.nameChangedHandler(event, person.id)}
             ></Person>
           })}
-
         </div> 
-      )
-      
-    }
+      )}
 
     return (/// returns rendered jsx
     <div className='App'> 
