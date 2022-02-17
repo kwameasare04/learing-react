@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
+import Radium from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
 
 class App extends Component { /// person tag in this funtion is a self closing tag
   state = {
@@ -11,7 +12,7 @@ class App extends Component { /// person tag in this funtion is a self closing t
     ],
     showPerson: false
   } /// state object accepts any type of data 
-
+git 
   /// this method removes an element from the array and returns update people array
 deletePersonHandler = (personIndex) =>{
 // const people = this.state.people; /// Don't do this!! As you are changing original array and leads to unpridictable code!!
@@ -69,8 +70,11 @@ this.setState({people:people})
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
-    };
+      cursor: 'pointer', 
+      ':hover': {backgroundColor: 'lightgreen',
+      color: 'black'
+    }
+  };
 
     let person = null; /// set person to null by default
 
@@ -91,8 +95,10 @@ this.setState({people:people})
         </div> 
       )
     style.backgroundColor = 'red'; 
+    style[':hover'] = {backgroundColor: 'salmon' ,
+    color: 'black' };
     }
-
+ 
     let classes = [];
     if(this.state.people.length <= 2){
       classes.push('red')
@@ -104,9 +110,9 @@ this.setState({people:people})
     return (/// returns rendered jsx
     <div className='App'> 
 
-      <h1> Hi, im a react app</h1> 
+      <h1> Rêæčt!!!</h1> 
         {/* onClick added that calls the event handler function when button is clicked */}
-        <p className={classes.join(' ')}>this is a random message</p> 
+        <p className={classes.join(' ')}>my first React Application!!! </p> 
         {/* links it to css element defined in app.css */}
       <button 
       style={style} ////referencing the style const create
@@ -120,6 +126,13 @@ this.setState({people:people})
   }
 }
 /// "this" in the name and age attribute refers to this class. state the object in the class and the people array in the object.
-export default App;
+export default Radium(App); // 1)To us you must call radium as a Function and wrap it around app.
+////////2)This is called a higher order component and is used to add some more functionality to your app component.
+ 
+
+
+ 
+
+
 
 
