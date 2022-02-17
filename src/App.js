@@ -64,12 +64,13 @@ this.setState({people:people})
   render() {
 /// created inline syle which is used by the button attribute
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
-    }
+    };
 
     let person = null; /// set person to null by default
 
@@ -77,7 +78,7 @@ this.setState({people:people})
     if(this.state.showPerson === true){
 ///// the person maps out the contents of the people array in state, each iteration produces a Person component with person.name and person.age
       person = (
-        <div>
+        <div >
           {this.state.people.map((person, index) => {
             return <Person 
             click={() => this.deletePersonHandler(index)}
@@ -88,13 +89,19 @@ this.setState({people:people})
             ></Person>
           })}
         </div> 
-      )}
+      )
+    style.backgroundColor = 'red'; 
+    }
 
+    let classes = ['red','bold'].join(' '); /// returns a string of red bold
+    
     return (/// returns rendered jsx
     <div className='App'> 
 
       <h1> Hi, im a react app</h1> 
         {/* onClick added that calls the event handler function when button is clicked */}
+        <p className={classes}>this is a random message</p> 
+        {/* links it to css element defined in app.css */}
       <button 
       style={style} ////referencing the style const create
       //// calls toggle person handler
