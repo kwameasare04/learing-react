@@ -93,14 +93,20 @@ this.setState({people:people})
     style.backgroundColor = 'red'; 
     }
 
-    let classes = ['red','bold'].join(' '); /// returns a string of red bold
+    let classes = [];
+    if(this.state.people.length <= 2){
+      classes.push('red')
+    }
+    if(this.state.people.length <= 1){
+      classes.push('bold');
+    }
     
     return (/// returns rendered jsx
     <div className='App'> 
 
       <h1> Hi, im a react app</h1> 
         {/* onClick added that calls the event handler function when button is clicked */}
-        <p className={classes}>this is a random message</p> 
+        <p className={classes.join(' ')}>this is a random message</p> 
         {/* links it to css element defined in app.css */}
       <button 
       style={style} ////referencing the style const create
