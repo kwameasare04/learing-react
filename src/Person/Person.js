@@ -1,6 +1,6 @@
 import React from 'react'; // have to import react to use any features
 import "./Person.css" /// have to import css file to use it
-import Radium from 'radium';
+// import Radium from 'radium';
 const person = (props) => { /// function returns a paragraph with the property name and age in statement
 return (
 /* dynamic content that returns properties name and age */
@@ -16,7 +16,7 @@ return (
 )
 }
 // props.children Allows for content to be added from outside person.js file
-export default Radium(person); /// Makes person the default export in the file.
+export default person; /// Makes person the default export in the file.
 
 
  

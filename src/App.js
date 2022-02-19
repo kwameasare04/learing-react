@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
-import Radium, {StyleRoot}  from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
+
+//import Radium, {StyleRoot}  from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
 
 class App extends Component { /// person tag in this funtion is a self closing tag
   state = {
@@ -64,17 +65,15 @@ this.setState({people:people})
 
   render() {
 /// created inline syle which is used by the button attribute
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer', 
-      ':hover': {backgroundColor: 'lightgreen',
-      color: 'black'
-    }
-  };
+const style = {
+backgroundColor: 'green',
+color: 'white',
+font: 'inherit',
+border: '1px solid blue',
+padding: '8px',
+cursor: 'pointer'
+};
+    
 
     let person = null; /// set person to null by default
 
@@ -95,8 +94,7 @@ this.setState({people:people})
         </div> 
       )
     style.backgroundColor = 'red'; 
-    style[':hover'] = {backgroundColor: 'salmon' ,
-    color: 'black' };
+
     }
  
     let classes = [];
@@ -108,7 +106,7 @@ this.setState({people:people})
     }
     
     return (/// returns rendered jsx
-      <StyleRoot>
+  
     <div className='App'> 
 
       <h1> Rêæčt!!!</h1> 
@@ -122,12 +120,12 @@ this.setState({people:people})
       {person}
  
     </div>
-     </StyleRoot> 
+     
     );
   }
 }
 /// "this" in the name and age attribute refers to this class. state the object in the class and the people array in the object.
-export default Radium(App); // 1)To us you must call radium as a Function and wrap it around app.
+export default App; // 1)To us you must call radium as a Function and wrap it around app.
 ////////2)This is called a higher order component and is used to add some more functionality to your app component.
  
 
