@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
-import Radium from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
+import Radium, {StyleRoot}  from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
 
 class App extends Component { /// person tag in this funtion is a self closing tag
   state = {
@@ -108,6 +108,7 @@ this.setState({people:people})
     }
     
     return (/// returns rendered jsx
+      <StyleRoot>
     <div className='App'> 
 
       <h1> Rêæčt!!!</h1> 
@@ -121,7 +122,7 @@ this.setState({people:people})
       {person}
  
     </div>
-    
+     </StyleRoot> 
     );
   }
 }
