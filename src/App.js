@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css'; // with the modifications made in the config files can target specific components
 import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
 
 //import Radium, {StyleRoot}  from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
@@ -65,17 +65,19 @@ this.setState({people:people})
 
   render() {
 /// created inline syle which is used by the button attribute
-const style = {
-backgroundColor: 'green',
-color: 'white',
-font: 'inherit',
-border: '1px solid blue',
-padding: '8px',
-cursor: 'pointer'
-};
-    
+// const style = {
+// backgroundColor: 'green',
+// color: 'white',
+// font: 'inherit',
+// border: '1px solid blue',
+// padding: '8px',
+// cursor: 'pointer'
+// };
+      
+
 
     let person = null; /// set person to null by default
+    let btnClass = '';
 
 ////returns person variable that is rendered when show person in state is true
     if(this.state.showPerson === true){
@@ -93,28 +95,29 @@ cursor: 'pointer'
           })}
         </div> 
       )
-    style.backgroundColor = 'red'; 
-
+    btnClass = classes.Red;
+          
     }
  
-    let classes = [];
+    let classesArray = [];
     if(this.state.people.length <= 2){
-      classes.push('red')
+      classesArray.push(classes.red)
     }
     if(this.state.people.length <= 1){
-      classes.push('bold');
+      classesArray.push(classes.bold); /// change syntax so that it references the classes 
     }
     
     return (/// returns rendered jsx
   
-    <div className='App'> 
+    <div className={classes.App}> 
 
       <h1> Rêæčt!!!</h1> 
         {/* onClick added that calls the event handler function when button is clicked */}
-        <p className={classes.join(' ')}>my first React Application!!! </p> 
+        <p className={classesArray.join(' ')}>my first React Application!!! </p> 
         {/* links it to css element defined in app.css */}
       <button 
-      style={style} ////referencing the style const create
+      className={btnClass}
+       ////referencing the style const create
       //// calls toggle person handler
       onClick={this.togglePersonHandler}>toggle people!</button> 
       {person}
