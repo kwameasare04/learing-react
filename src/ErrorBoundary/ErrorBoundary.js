@@ -8,7 +8,7 @@ class ErrorBoundary extends Component {
     }
 ////// method that recieves potential error and info about the error that is passed automatically by react, will be excuated when a component wrapped with this class has error
     componentDidCatch = (error, info) => {
-        this.state({hasError: true, errorMessage: error})
+        this.setState({hasError: true, errorMessage: error})
     }
 
     render(){
