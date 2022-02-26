@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css'; // with the modifications made in the config files can target specific components
-import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Person from '../components/People/Person/Person'; /// A statement that imports "Person" from the Person.js file
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 //import Radium, {StyleRoot}  from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
 
