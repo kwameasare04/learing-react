@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css'; // with the modifications made in the config files can target specific components
 import Person from './Person/Person'; /// A statement that imports "Person" from the Person.js file
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 //import Radium, {StyleRoot}  from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
 
@@ -85,18 +86,20 @@ this.setState({people:people})
       person = (
         <div >
           {this.state.people.map((person, index) => {
-            return <Person 
+            return <ErrorBoundary>
+              <Person 
             click={() => this.deletePersonHandler(index)}
             name={person.name} 
             age={person.age}
             key={person.id} //// unique identifier added to key. Would usually be primary key from db
             changed={(event) =>  this.nameChangedHandler(event, person.id)}
             ></Person>
+            </ErrorBoundary>
           })}
         </div> 
       )
     btnClass = classes.Red;
-          
+           
     }
  
     let classesArray = [];
