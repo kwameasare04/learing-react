@@ -2,10 +2,10 @@ import React from 'react'; // have to import react to use any features
 import classes from "./Person.css" /// have to import css file to use it
 // import Radium from 'radium';
 const person = (props) => { /// function returns a paragraph with the property name and age in statement
-    const random = Math.random();
-    if(random > 0.7) {
-        throw new Error("Error test!!!")
-    }
+    // const random = Math.random();
+    // if(random > 0.7) {
+    //     throw new Error("Error test!!!")
+    // }
 return (
 /* dynamic content that returns properties name and age */
 <div className={classes.Person}> {/* giving div class name so it can be targeted in css file}
