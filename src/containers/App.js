@@ -8,15 +8,26 @@ import Cockpit from '../components/Cockpit/Cockpit';
 //import Radium, {StyleRoot}  from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
 
 class App extends Component { /// person tag in this funtion is a self closing tag
-  state = {
+constructor(props){ 
+  super(props);
+  console.log('[app.js} constructor')
+  ///Constructor method also used for initialising state. Also don't use setState!!
+  this.state = { 
     people: [
       {id: 'qwe', name: 'Kevin', age:'36'},   //////added unique id's to people object array to help react identify different componets
       {id: 'dcv',name: 'Max', age:'28'},
       {id: 'yhu',name: 'Rodney', age:'19'}  
     ],
     showPerson: false
-  } /// state object accepts any type of data 
-git 
+  } /// state object accepts any type of data  
+}
+
+static getDerivedStateFromProps(props, state){
+console.log('[App.js] getDerivedStateFromProps' , props)
+return state;
+}
+   
+
   /// this method removes an element from the array and returns update people array
 deletePersonHandler = (personIndex) =>{
 // const people = this.state.people; /// Don't do this!! As you are changing original array and leads to unpridictable code!!
@@ -60,18 +71,7 @@ this.setState({people:people})
 
 
   render() {
-/// created inline syle which is used by the button attribute
-// const style = {
-// backgroundColor: 'green',
-// color: 'white',
-// font: 'inherit',
-// border: '1px solid blue',
-// padding: '8px',
-// cursor: 'pointer'
-// };
-      
-
-
+    console.log('[App.js] render method')
     let person = null; /// set person to null by default
     let btnClass = '';
 
@@ -88,6 +88,7 @@ this.setState({people:people})
   
     <div className={classes.App}> 
       <Cockpit 
+      title={this.props.title}
       showPerson={this.state.showPerson}
       people={this.state.people}
       clicked={this.togglePersonHandler}

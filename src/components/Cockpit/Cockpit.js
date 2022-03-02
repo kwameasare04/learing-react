@@ -15,7 +15,7 @@ const cockpit = (props)=>{
     }
 return (
     <div className={classes.Cockpit}>
-    <h1> Rêæčt!!!</h1> 
+    <h1> {props.title} </h1> 
         {/* onClick added that calls the event handler function when button is clicked */}
         <p className={classesArray.join(' ')}>my first React Application!!! </p> 
         {/* links it to css element defined in app.css */}
