@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css'; // with the modifications made in the config files can target specific components
 import Person from '../components/People/Person/Person'; /// A statement that imports "Person" from the Person.js file
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+// import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import People from '../components/People/Person/People';
 import Cockpit from '../components/Cockpit/Cockpit';
 
@@ -18,7 +18,8 @@ constructor(props){
       {id: 'dcv',name: 'Max', age:'28'},
       {id: 'yhu',name: 'Rodney', age:'19'}  
     ],
-    showPerson: false
+    showPerson: false,
+    showCockpit: true
   } /// state object accepts any type of data  
 }
 
@@ -26,7 +27,21 @@ static getDerivedStateFromProps(props, state){
 console.log('[App.js] getDerivedStateFromProps' , props)
 return state;
 }
-   
+
+componentDidMount(){
+  console.log('[App.js] componentDidMount');
+
+}
+
+shouldComponentUpdate(nextProps,nextState){
+  console.log('[App.js] shouldComponentUpdate');
+  return true;
+}
+
+
+componentDidUpdate(){
+  console.log('[App.js] componentDidUpdate');
+}
 
   /// this method removes an element from the array and returns update people array
 deletePersonHandler = (personIndex) =>{
@@ -73,7 +88,7 @@ this.setState({people:people})
   render() {
     console.log('[App.js] render method')
     let person = null; /// set person to null by default
-    let btnClass = '';
+    // let btnClass = '';
 
 ////returns person variable that is rendered when show person in state is true
     if(this.state.showPerson === true){
@@ -85,14 +100,14 @@ this.setState({people:people})
           />;      
     } 
     return (/// returns rendered jsx
-  
     <div className={classes.App}> 
-      <Cockpit 
+    <button onClick={()=>{this.setState({showCockpit: false})}}> remove cockpit </button>
+      {this.state.showCockpit ? <Cockpit 
       title={this.props.title}
       showPerson={this.state.showPerson}
       people={this.state.people}
       clicked={this.togglePersonHandler}
-      />  
+      /> : null} 
       {person}
  
     </div>

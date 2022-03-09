@@ -7,6 +7,12 @@ class People  extends Component {
 //     console.log('[Person.js] getDerivedStateFromProps');
 //      return state;
 // }
+// componentWillReceiveProps(props){
+//   console.log('[Person.js] componentWillReceiveProps', props);
+// }
+// componentWillUpdate(){
+
+// }
 
 shouldComponetUdate(){
     return true;
@@ -14,13 +20,19 @@ shouldComponetUdate(){
 
 getSnapshotBeforeUpdate(){
     console.log('[Person.js] getSnapshotBeforeUpdate ');
-    return null;
+    return {message: 'Snapshot'};
 }
 
-componentDidUpdate(){
+componentDidUpdate(prevProps, prevState, snapshot){
     console.log('[Person.js] componentDidUpdate ');
-
+    console.log(snapshot);
 }
+
+componentWillUnmount(){
+  ///runs just before component is removed
+  console.log('[Person.js] componentWillUnmount')
+}
+
   render(){
   console.log('[People.js] rendering person...');
    return this.props.people.map((person, index) => {

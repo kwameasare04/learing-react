@@ -1,7 +1,39 @@
-import React from "react";
+import React, {useEffect} from "react";
+//// useEffect runs for every render cycle of component
 import classes from './Cockpit.css'
 
 const cockpit = (props)=>{
+  
+//   useEffect(()=>{
+//    ///This runs for every re-render cycle
+//     console.log("[cockpit.js] useEffect");
+//     setTimeout(()=>{
+//       alert("tomatoes are green");
+//     }, 1000);
+//  },[props.people]);
+//  ////only renders when the people component is rendered 
+
+ useEffect(()=>{
+  ///This runs for every re-render cycle
+   console.log("[cockpit.js] useEffect");
+   const timer = setTimeout(()=>{
+     alert("tomatoes are green");
+   }, 1000);
+   return () => {
+     clearTimeout(timer);
+     console.log('[Cockpit.js] cleanup work in useEffect')
+   }
+},[]);
+///is only rendered the first time passing an empty array, this tells react this effect has no dependancies 
+
+useEffect(()=>{
+  console.log("[cockpit.js] 2nd useEffect");
+  return () => {
+    console.log('[Cockpit.js] cleanup work in 2nd useEffect')
+  }
+})
+
+
     let classesArray = [];
     let btnClass = '';
     if(props.showPerson){
