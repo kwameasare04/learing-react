@@ -20,7 +20,6 @@ const cockpit = (props)=>{
      alert("tomatoes are green");
    }, 1000);
    return () => {
-     clearTimeout(timer);
      console.log('[Cockpit.js] cleanup work in useEffect')
    }
 },[]);
