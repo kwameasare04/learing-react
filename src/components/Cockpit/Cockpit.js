@@ -16,7 +16,7 @@ const cockpit = (props)=>{
  useEffect(()=>{
   ///This runs for every re-render cycle
    console.log("[cockpit.js] useEffect");
-   const timer = setTimeout(()=>{
+    setTimeout(()=>{
      alert("tomatoes are green");
    }, 1000);
    return () => {
@@ -38,10 +38,10 @@ useEffect(()=>{
     if(props.showPerson){
         btnClass = classes.Red
     }
-    if(props.people.length <= 2){
+    if(props.peopleLength <= 2){
       classesArray.push(classes.red)
     }
-    if(props.people.length <= 1){
+    if(props.peopleLength <= 1){
       classesArray.push(classes.bold); /// change syntax so that it references the classes 
     }
 return (
@@ -59,4 +59,4 @@ return (
 );
 };
 
-export default cockpit;
+export default React.memo(cockpit);

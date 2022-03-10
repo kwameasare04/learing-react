@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classes from './App.css'; // with the modifications made in the config files can target specific components
-import Person from '../components/People/Person/Person'; /// A statement that imports "Person" from the Person.js file
 // import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import People from '../components/People/Person/People';
 import Cockpit from '../components/Cockpit/Cockpit';
@@ -105,7 +104,7 @@ this.setState({people:people})
       {this.state.showCockpit ? <Cockpit 
       title={this.props.title}
       showPerson={this.state.showPerson}
-      people={this.state.people}
+      peopleLength={this.state.people.length}
       clicked={this.togglePersonHandler}
       /> : null} 
       {person}
