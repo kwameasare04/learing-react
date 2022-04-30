@@ -10,6 +10,9 @@ class Person extends Component  { /// function returns a paragraph with the prop
     // if(random > 0.7) {
     //     throw new Error("Error test!!!")
     // }
+    componentDidMount(){
+       this.inputElement.focus(); ////after rendering focus is used
+    }
 
    render(){
     console.log('[person.js] rendering...')
@@ -17,7 +20,9 @@ class Person extends Component  { /// function returns a paragraph with the prop
      <Aux>
          <p key={"item1"} onClick={this.props.click}> hello i'm {this.props.name} and i am {this.props.age} years old!</p>
          <p key={"item2"}>{this.props.children}</p>      
-         <input key={"item3"} type="text" onChange={this.props.changed} value={this.props.name}/>
+         <input key={"item3"} type="text" onChange={this.props.changed} 
+         ref={(inputEl)=>{this.inputElement = inputEl}} //// using this function references the element it is used in
+         value={this.props.name}/>
      </Aux>
         );     
   
