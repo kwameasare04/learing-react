@@ -1,6 +1,7 @@
 import React, {Component} from 'react'; // have to import react to use any features
-import classes from "./Person.css" /// have to import css file to use it
-import Aux from '../../../hoc/Aux'
+import classes from "./Person.css"; /// have to import css file to use it
+import Aux from '../../../hoc/Aux';
+import withClass from '../../../hoc/withClass';
 class Person extends Component  { /// function returns a paragraph with the property name and age in statement
     // const random = Math.random();
     // if(random > 0.7) {
@@ -22,7 +23,7 @@ class Person extends Component  { /// function returns a paragraph with the prop
           
     
 // props.children Allows for content to be added from outside person.js file
-export default Person; /// Makes person the default export in the file.
+export default withClass(Person, classes.Person); /// Makes person the default export in the file.
 
 
         //  /* dynamic content that returns properties name and age */

@@ -19,7 +19,8 @@ constructor(props){
       {id: 'yhu',name: 'Rodney', age:'19'}  
     ],
     showPerson: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   } /// state object accepts any type of data  
 }
 
@@ -75,9 +76,12 @@ this.setState({people:people})
     persons.name = event.target.value; /// changes value of persons name to the target value
     const people = [ ...this.state.people ]; ///create a copy of the people array
     people[personIndex] = persons; /// change the value of slescted index in the copied array
-    this.setState({people:people}) ///change the state value in people 
+    this.setState((prevProps, props)=>{
+      return { people:people,
+         changeCounter: prevState.changeCounter + 1}}
+    }) /// how to change the state value when changing multiple values
   }
-
+  people:people, changeCounter: this.state.changeCounter + 1}
 
   togglePersonHandler = () =>{
     const doesShow = this.state.showPerson;
