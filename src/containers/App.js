@@ -14,9 +14,9 @@ constructor(props){
   ///Constructor method also used for initialising state. Also don't use setState!!
   this.state = { 
     people: [
-      {id: 'qwe', name: 'Kevin', age:'36'},   //////added unique id's to people object array to help react identify different componets
-      {id: 'dcv',name: 'Max', age:'28'},
-      {id: 'yhu',name: 'Rodney', age:'19'}  
+      {id: 'qwe', name: 'Kevin', age: 26},   //////added unique id's to people object array to help react identify different componets
+      {id: 'dcv',name: 'Max', age:28},
+      {id: 'yhu',name: 'Rodney', age: 19}  
     ],
     showPerson: false,
     showCockpit: true,
