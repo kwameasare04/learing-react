@@ -3,7 +3,8 @@ import classes from './App.css'; // with the modifications made in the config fi
 // import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import People from '../components/People/Person/People';
 import Cockpit from '../components/Cockpit/Cockpit';
-
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux';
 //import Radium, {StyleRoot}  from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
 
 class App extends Component { /// person tag in this funtion is a self closing tag
@@ -68,12 +69,12 @@ this.setState({people:people})
     const personIndex = this.state.people.findIndex(p => {
       return p.id === id
     }) /// returns the index of the value being targeted 
-    const person = {
+    const persons = {
       ...this.state.people[personIndex]
     } ////stores value of the index being targeted
-    person.name = event.target.value; /// changes value of persons name to the target value
+    persons.name = event.target.value; /// changes value of persons name to the target value
     const people = [ ...this.state.people ]; ///create a copy of the people array
-    people[personIndex] = person; /// change the value of slescted index in the copied array
+    people[personIndex] = persons; /// change the value of slescted index in the copied array
     this.setState({people:people}) ///change the state value in people 
   }
 
@@ -86,20 +87,20 @@ this.setState({people:people})
 
   render() {
     console.log('[App.js] render method')
-    let person = null; /// set person to null by default
+    let persons = null; /// set person to null by default
     // let btnClass = '';
 
 ////returns person variable that is rendered when show person in state is true
     if(this.state.showPerson === true){
 ///// the person maps out the contents of the people array in state, each iteration produces a Person component with person.name and person.age
-      person =  <People
+      persons =  <People
           people={this.state.people}
           clicked={this.deletePersonHandler}
           changed={this.nameChangedHandler}
           />;      
     } 
-    return (/// returns rendered jsx
-    <div className={classes.App}> 
+    return (
+      <Aux>
     <button onClick={()=>{this.setState({showCockpit: false})}}> remove cockpit </button>
       {this.state.showCockpit ? <Cockpit 
       title={this.props.title}
@@ -107,15 +108,15 @@ this.setState({people:people})
       peopleLength={this.state.people.length}
       clicked={this.togglePersonHandler}
       /> : null} 
-      {person}
+      {persons}
  
-    </div>
+      </Aux>
      
     );
   }
 }
 /// "this" in the name and age attribute refers to this class. state the object in the class and the people array in the object.
-export default App; // 1)To us you must call radium as a Function and wrap it around app.
+export default withClass(App, classes.App); // 1)To us you must call radium as a Function and wrap it around app.
 ////////2)This is called a higher order component and is used to add some more functionality to your app component.
  
 

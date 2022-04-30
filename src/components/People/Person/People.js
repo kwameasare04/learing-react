@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React, {PureComponent} from 'react';
 import Person from './Person'
 
 /////PureComponent is a componenont that implements shouldComponentUpdate with complete props Check
