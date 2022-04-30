@@ -76,12 +76,13 @@ this.setState({people:people})
     persons.name = event.target.value; /// changes value of persons name to the target value
     const people = [ ...this.state.people ]; ///create a copy of the people array
     people[personIndex] = persons; /// change the value of slescted index in the copied array
-    this.setState((prevProps, props)=>{
-      return { people:people,
-         changeCounter: prevState.changeCounter + 1}}
-    }) /// how to change the state value when changing multiple values
-  }
-  people:people, changeCounter: this.state.changeCounter + 1}
+    this.setState((prevState, props)=>{
+     return { people:people,
+         changeCounter: prevState.changeCounter + 1};
+        }
+    )}; /// how to change the state value when changing multiple values
+  
+  
 
   togglePersonHandler = () =>{
     const doesShow = this.state.showPerson;
