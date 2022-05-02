@@ -49,6 +49,7 @@ componentWillUnmount(){
         age={person.age}
         key={person.id} //// unique identifier added to key. Would usually be primary key from db
         changed={(event) =>  this.props.changed(event, person.id)}
+        isAuth={this.props.isAuthenticated}
         ></Person>
       });
     }

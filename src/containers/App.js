@@ -20,19 +20,20 @@ constructor(props){
     ],
     showPerson: false,
     showCockpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false 
   } /// state object accepts any type of data  
 }
 
 static getDerivedStateFromProps(props, state){
 console.log('[App.js] getDerivedStateFromProps' , props)
 return state;
-}
+};
 
 componentDidMount(){
   console.log('[App.js] componentDidMount');
 
-}
+};
 
 shouldComponentUpdate(nextProps,nextState){
   console.log('[App.js] shouldComponentUpdate');
@@ -42,7 +43,7 @@ shouldComponentUpdate(nextProps,nextState){
 
 componentDidUpdate(){
   console.log('[App.js] componentDidUpdate');
-}
+};
 
   /// this method removes an element from the array and returns update people array
 deletePersonHandler = (personIndex) =>{
@@ -87,8 +88,11 @@ this.setState({people:people})
   togglePersonHandler = () =>{
     const doesShow = this.state.showPerson;
     this.setState({showPerson: !doesShow}); ///changes showPerson to value it is not currently set too
-  }
+  };
 
+  loginHandler = () => {
+    this.setState({authenticated: true});
+  };
 
   render() {
     console.log('[App.js] render method')
@@ -102,6 +106,7 @@ this.setState({people:people})
           people={this.state.people}
           clicked={this.deletePersonHandler}
           changed={this.nameChangedHandler}
+          isAuthenticated={this.state.authenticated}
           />;      
     } 
     return (
@@ -112,6 +117,7 @@ this.setState({people:people})
       showPerson={this.state.showPerson}
       peopleLength={this.state.people.length}
       clicked={this.togglePersonHandler}
+      login={this.loginHandler}
       /> : null} 
       {persons}
  

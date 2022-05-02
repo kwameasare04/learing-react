@@ -61,6 +61,7 @@ return (
       onClick={props.clicked}
       ref={toggleBtnRef}
       >toggle people!</button>  
+      <button onClick={props.login}>Login</button>
      </div>
 );
 };
