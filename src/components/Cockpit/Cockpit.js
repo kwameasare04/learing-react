@@ -1,8 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 //// useEffect runs for every render cycle of component
 import classes from './Cockpit.css'
 
 const cockpit = (props)=>{
+  const toggleBtnRef = useRef(null);
+ 
   
 //   useEffect(()=>{
 //    ///This runs for every re-render cycle
@@ -17,8 +19,9 @@ const cockpit = (props)=>{
   ///This runs for every re-render cycle
    console.log("[cockpit.js] useEffect");
     setTimeout(()=>{
-     alert("tomatoes are green");
+      toggleBtnRef.current.click();
    }, 1000);
+ 
    return () => {
      console.log('[Cockpit.js] cleanup work in useEffect')
    }
@@ -55,7 +58,9 @@ return (
       className={btnClass}
        ////referencing the style const create
       //// calls toggle person handler
-      onClick={props.clicked}>toggle people!</button>  
+      onClick={props.clicked}
+      ref={toggleBtnRef}
+      >toggle people!</button>  
      </div>
 );
 };
