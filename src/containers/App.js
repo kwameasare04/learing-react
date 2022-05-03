@@ -5,6 +5,7 @@ import People from '../components/People/Person/People';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
+import AuthContext from '../context/auth-context';
 //import Radium, {StyleRoot}  from 'radium'; /// A package that lets you use inline styles with sudo selectors and media quries!!! e.g. hover
 
 class App extends Component { /// person tag in this funtion is a self closing tag
@@ -110,19 +111,19 @@ this.setState({people:people})
           />;      
     } 
     return (
+      <AuthContext.Provider value={{authenticated: this.state.authenticated, login: this.loginHandler}}>
       <Aux>
     <button onClick={()=>{this.setState({showCockpit: false})}}> remove cockpit </button>
-      {this.state.showCockpit ? <Cockpit 
+      {this.state.showCockpit ? ( <Cockpit 
       title={this.props.title}
       showPerson={this.state.showPerson}
       peopleLength={this.state.people.length}
       clicked={this.togglePersonHandler}
-      login={this.loginHandler}
-      /> : null} 
+      /> ) : null} 
       {persons}
  
       </Aux>
-     
+      </AuthContext.Provider>
     );
   }
 }

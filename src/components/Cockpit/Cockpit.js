@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 //// useEffect runs for every render cycle of component
-import classes from './Cockpit.css'
+import classes from './Cockpit.css';
+import AuthContext from '../../context/auth-context';
 
 const cockpit = (props)=>{
   const toggleBtnRef = useRef(null);
@@ -61,7 +62,9 @@ return (
       onClick={props.clicked}
       ref={toggleBtnRef}
       >toggle people!</button>  
-      <button onClick={props.login}>Login</button>
+      <AuthContext.Consumer>
+         {(context) => <button onClick={context.login}>Login</button>}  
+      </AuthContext.Consumer>
      </div>
 );
 };
