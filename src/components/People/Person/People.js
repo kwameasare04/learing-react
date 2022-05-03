@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import Person from './Person'
-import AuthContext from '../../../context/auth-context';
+
 
 /////PureComponent is a componenont that implements shouldComponentUpdate with complete props Check
 class People extends PureComponent {
